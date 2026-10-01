@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Tests, static analysis and coding standard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          # gd is required by TheatreCMS core, which is installed as a dependency.
+          extensions: gd, pdo_sqlite
+          coverage: none
+          tools: composer:v2
+
+      - uses: ramsey/composer-install@v4
+
+      - name: PHPUnit
+        run: vendor/bin/phpunit
+
+      - name: PHPStan
+        if: ${{ !cancelled() }}
+        run: vendor/bin/phpstan analyse -c phpstan.neon.dist --no-progress --error-format=github
+
+      - name: PHP_CodeSniffer
+        if: ${{ !cancelled() }}
+        run: vendor/bin/phpcs -q

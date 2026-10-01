@@ -1,0 +1,38 @@
+{
+    "name": "theatrecms/wp-import",
+    "description": "Imports WordPress content into TheatreCMS.",
+    "type": "theatrecms-plugin",
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "php": ">=8.4",
+        "theatrecms/theatrecms": "dev-main"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.5",
+        "phpstan/phpstan": "^2.0",
+        "squizlabs/php_codesniffer": "^4.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/TheatreCMS/theatrecms"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "TheatreCMS\\WpImport\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TheatreCMS\\WpImport\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "theatrecms": {
+            "plugin": "TheatreCMS\\WpImport\\Plugin"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
