@@ -12,12 +12,6 @@
         "phpstan/phpstan": "^2.0",
         "squizlabs/php_codesniffer": "^4.0"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/TheatreCMS/theatrecms"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "TheatreCMS\\WpImport\\": "src/"

@@ -16,6 +16,7 @@ See `documentation/plugins.md` in [TheatreCMS](https://github.com/TheatreCMS/the
 ## Developing
 
 ```sh
+composer config repositories.theatrecms vcs https://github.com/TheatreCMS/theatrecms   # once; core isn't on Packagist yet
 composer install       # installs TheatreCMS core from GitHub as a dependency
 vendor/bin/phpunit
 vendor/bin/phpstan analyse -c phpstan.neon.dist

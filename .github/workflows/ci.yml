@@ -24,6 +24,11 @@ jobs:
           coverage: none
           tools: composer:v2
 
+      # TheatreCMS core isn't on Packagist yet. Adding its repository here rather than in composer.json
+      # keeps local installs (which merge every plugin's composer.json) from contacting GitHub.
+      - name: Add the TheatreCMS core repository
+        run: composer config repositories.theatrecms vcs https://github.com/TheatreCMS/theatrecms
+
       - uses: ramsey/composer-install@v4
 
       - name: PHPUnit
