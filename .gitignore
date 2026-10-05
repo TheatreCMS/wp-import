@@ -1,3 +1,10 @@
 /vendor/
 /composer.lock
 /.phpunit.cache/
+
+# Database dumps hold secrets and personal data: never commit one.
+/*.sql
+/dumps/
+*.sql.gz
+*.sql.bz2
+*.sql.xz
